@@ -1,4 +1,4 @@
-describe("The RegistrationNumbers", function(){
+describe("Matching Days function", function(){
   it("It should return true when a date has the same day", function(){
     var days = MatchDays();
     assert.deepEqual(days.sameWeekday('2000-01-12' , '2000-01-12'), true);
