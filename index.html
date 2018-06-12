@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <style>
+      .blue{background-color: blue;}
+      .red{background-color: red;}
+      .green{background-color: green;}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="js/matching-days.js"></script>
+    <script src='js/matching-days-dom.js' charset="utf-8"></script>
+    <script type='text/x-template' class = 'DisplayHead'>
+      {{header 'Macthing Days'}}
+    </script>
+    <script type = 'text/x-template' class = 'days'>
+      <table>
+        <tr>
+        {{#each week}}<td class='{{color}}'>{{day}}</td>{{/each}}
+      </tr>
+      </table>
+    </script>
+    <script type = 'text/x-template' class = 'inputArea'>
+        {{#makeInput 'Date'}}
+          First-Date
+          Second-Date
+        {{/makeInput}}
+    </script>
+  </head>
+  <body>
+    <div id = 'head'></div>
+    <div id = 'daysTable'></div>
+    <div id = 'dateinput'></div>
+
+  </body>
+</html>
