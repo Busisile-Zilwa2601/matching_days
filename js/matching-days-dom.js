@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var output = '';
     for(var val in theInput){
       var item = theInput[val].trim();
-      output += '<input type ="date" value="" id='+item+'>';
+      output += item +": "+'<input type ="date" value="" id='+item+'>';
     }
     return output;
   });
