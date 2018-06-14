@@ -25,18 +25,18 @@ describe("Matching Days function", function(){
     days.highlight('2000-01-12', '2000-01-12');
     assert.deepEqual(days.highlight('2000-01-12', '2000-01-12'), {Sunday:{day:"Sunday"}, Monday:{day:"Monday"}, Tuesday:{day:"Tuesday"}, Wednesday:{"color":"green", day:"Wednesday"}, Thursday:{day:"Thursday"}, Friday:{day:"Friday"}, Saturday:{day:"Saturday"}});
   });
-  it("It should highlight red and blue when the dates do not occor od the same day", function(){
+  it("It should highlight red and blue when the dates do not occor on the same day", function(){
     var days = MatchDays();
     days.highlight('2018-06-05', '2000-01-12');
     assert.deepEqual(days.highlight('2018-06-05', '2000-01-12'), { Sunday:{day:"Sunday"}, Monday:{day : "Monday"}, Tuesday:{"color":"red", day:"Tuesday"}, Wednesday:{"color":"blue", day:"Wednesday"}, Thursday:{day:"Thursday"}, Friday:{day:"Friday"}, Saturday:{day:"Saturday"}})
 
   });
-  it("It should highlight red the fist date when dates do not occor od the same day", function(){
+  it("It should highlight red the fist date when dates do not occor on the same day", function(){
     var days = MatchDays();
     days.highlight('2018-06-05', '2000-01-12');
     assert.deepEqual(days.highlight('2018-06-05'), {Sunday:{ day:"Sunday"}, Monday:{ day:"Monday"}, Tuesday:{"color":"red", day:"Tuesday"}, Wednesday:{day:"Wednesday"}, Thursday:{day:"Thursday"}, Friday:{day:"Friday"}, Saturday:{day:"Saturday"}});
   });
-  it("It should highlight blue the second date when dates do not occor od the same day", function(){
+  it("It should highlight blue the second date when dates do not occor odn the same day", function(){
     var days = MatchDays();
     days.highlight('2018-06-05', '2000-01-12');
     assert.deepEqual(days.highlight('' ,'2000-01-12'), { Sunday:{ day:"Sunday"}, Monday:{ day:"Monday"}, Tuesday:{ day:"Tuesday"}, Wednesday:{"color":"blue", day:"Wednesday"}, Thursday:{ day:"Thursday"}, Friday:{ day:"Friday"}, Saturday:{day:"Saturday"}});
