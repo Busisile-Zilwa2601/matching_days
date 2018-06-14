@@ -1,6 +1,7 @@
 function MatchDays(){
   var weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   var mapDays = {};
+  var myDayslist = [];
   var dateValidation = function(date_entry){
     var regex = /^\d{4}(\-|\/|\.)\d{1,2}\1\d{1,2}$/
     return regex.test(date_entry);
@@ -22,18 +23,18 @@ function MatchDays(){
   function highlight(date1, date2){
     for(var i = 0; i < weekDays.length; i++){
       var myDay = weekDays[i];
-      mapDays[myDay] = {
-                day: myDay};
+      mapDays[i] = {day : myDay};
       if(myDay === returnDay(date1) && myDay === returnDay(date2)){
-        mapDays[myDay] = Object.assign({'color': 'green'}, mapDays[myDay]);
+        mapDays[i] = Object.assign({'color': 'green'},mapDays[i]);
       }
       if(myDay === returnDay(date1)){
-        mapDays[myDay] = Object.assign({'color': 'red'}, mapDays[myDay]);
+        mapDays[i] = Object.assign({'color': 'red'},mapDays[i] );
       }
       if(myDay === returnDay(date2)){
-        mapDays[myDay] = Object.assign({'color': 'blue'}, mapDays[myDay]);
+        mapDays[i] = Object.assign({'color': 'blue'},mapDays[i]);
       }
     }
+
     return mapDays;
   }
   function changeFormat(date){
