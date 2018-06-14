@@ -7,37 +7,32 @@ describe("Matching Days function", function(){
     var days = MatchDays();
     assert.deepEqual(days.returnDay('2018-06-05'), 'Tuesday' );
   });
-  it("It should return a day which the date occurs", function(){
-    var days = MatchDays();
-    assert.deepEqual(days.returnDay('2000-01-12'), 'Wednesday' );
-  });
   it("Used date validation, It should return true for a correct format and false for incorrect", function(){
     var days = MatchDays();
     assert.deepEqual(days.dateValidation('2000-01-12'),true );
     assert.deepEqual(days.dateValidation('12-01-2000'),false );
   });
-  it("It should return all days of the week inside the object mapDays", function(){
+  it("It should return all days of the week inside a list", function(){
     var days = MatchDays();
-    assert.deepEqual(days.highlight(), {0:{day: "Sunday"}, 1:{day: "Monday"}, 2:{day: "Tuesday"}, 3:{day: "Wednesday"}, 4:{day: "Thursday"}, 5:{day: "Friday"}, 6:{day: "Saturday"}});
+    assert.deepEqual(days.highlight(), [{day: "Sunday"}, {day: "Monday"}, {day: "Tuesday"}, {day: "Wednesday"}, {day: "Thursday"}, {day: "Friday"}, {day: "Saturday"}]);
   });
 
   it("It should highlight green when the dates occor on the same day", function(){
     var days = MatchDays();
-    assert.deepEqual(days.highlight('2000-01-12', '2000-01-12'), {0:{day:"Sunday"}, 1:{day:"Monday"}, 2:{day:"Tuesday"}, 3:{"color":"green", day:"Wednesday"}, 4:{day:"Thursday"}, 5:{day:"Friday"}, 6:{day:"Saturday"}});
+    assert.deepEqual(days.highlight('2000-01-12', '2000-01-12'), [{day:"Sunday"}, {day:"Monday"}, {day:"Tuesday"}, {"color":"green", day:"Wednesday"}, {day:"Thursday"}, {day:"Friday"}, {day:"Saturday"}]);
   });
 
   it("It should highlight red and blue when the dates do not occor on the same day", function(){
     var days = MatchDays();
-    assert.deepEqual(days.highlight('2018-06-05', '2000-01-12'), { 0:{day:"Sunday"}, 1:{day : "Monday"}, 2:{"color":"red", day:"Tuesday"}, 3:{"color":"blue", day:"Wednesday"}, 4:{day:"Thursday"}, 5:{day:"Friday"}, 6:{day:"Saturday"}});
+    assert.deepEqual(days.highlight('2018-06-05', '2000-01-12'), [{day:"Sunday"}, {day : "Monday"}, {"color":"red", day:"Tuesday"}, {"color":"blue", day:"Wednesday"}, {day:"Thursday"}, {day:"Friday"}, {day:"Saturday"}]);
   });
   it("It should highlight red the first date when dates do not occor on the same day", function(){
     var days = MatchDays();
-    assert.deepEqual(days.highlight('2018-06-05'), {0:{ day:"Sunday"}, 1:{ day:"Monday"}, 2:{"color":"red", day:"Tuesday"}, 3:{day:"Wednesday"}, 4:{day:"Thursday"}, 5:{day:"Friday"}, 6:{day:"Saturday"}});
+    assert.deepEqual(days.highlight('2018-06-05'), [{ day:"Sunday"}, { day:"Monday"}, {"color":"red", day:"Tuesday"}, {day:"Wednesday"}, {day:"Thursday"}, {day:"Friday"}, {day:"Saturday"}]);
   });
   it("It should highlight blue the second date when dates do not occor on the same day", function(){
     var days = MatchDays();
-    days.highlight('2018-06-05', '2000-01-12');
-    assert.deepEqual(days.highlight('' ,'2000-01-12'), { 0:{ day:"Sunday"}, 1:{ day:"Monday"}, 2:{ day:"Tuesday"}, 3:{"color":"blue", day:"Wednesday"}, 4:{ day:"Thursday"}, 5:{ day:"Friday"}, 6:{day:"Saturday"}});
+    assert.deepEqual(days.highlight('' ,'2000-01-12'), [{ day:"Sunday"}, { day:"Monday"}, { day:"Tuesday"}, {"color":"blue", day:"Wednesday"}, { day:"Thursday"}, { day:"Friday"}, {day:"Saturday"}]);
   });
   it('It should return the long format of a date', function(){
     var days = MatchDays();

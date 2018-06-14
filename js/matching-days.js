@@ -23,19 +23,21 @@ function MatchDays(){
   function highlight(date1, date2){
     for(var i = 0; i < weekDays.length; i++){
       var myDay = weekDays[i];
-      mapDays[i] = {day : myDay};
+      mapDays = {day : myDay};
+      myDayslist[i] = mapDays;
       if(myDay === returnDay(date1) && myDay === returnDay(date2)){
-        mapDays[i] = Object.assign({'color': 'green'},mapDays[i]);
+        myDayslist[i] = Object.assign({'color': 'green'}, mapDays);
+        continue;
       }
       if(myDay === returnDay(date1)){
-        mapDays[i] = Object.assign({'color': 'red'},mapDays[i] );
+        myDayslist[i] = Object.assign({'color': 'red'},mapDays);
       }
       if(myDay === returnDay(date2)){
-        mapDays[i] = Object.assign({'color': 'blue'},mapDays[i]);
+        myDayslist[i] = Object.assign({'color': 'blue'},mapDays);
       }
     }
 
-    return mapDays;
+    return myDayslist;
   }
   function changeFormat(date){
     var d = new Date(date);
@@ -49,6 +51,6 @@ function MatchDays(){
     highlight,
     getColor,
     changeFormat,
-    mapDays,
+    myDayslist,
   }
 }
